@@ -1,0 +1,39 @@
+dmDateTimePickerPlugin is missing add on for Diem. It provides you with date, time and datetime picker for the mentioned fields.
+
+Where can be used?
+---------------
+It is mentioned to be used for the admin part of the application, but since it contains widgets, it is fully compatible for front part of the application.
+
+How to use it?
+---------
+In your schema.yml add "extra" for the following field types:
+ - date => datepicker
+ - time => timepicker
+ - timestamp => datetimepicker
+for the admin.
+
+For the front application, use provided widgets, and that's all
+
+How does it works?
+---------
+Simple, hides symfony select fields, adds text box and javascript that manages hidden fields values. Simple, huh?
+
+What is different?
+---------
+Everything! The concept is different - javascript is just a presentation of Symfony DateTime, we do not touch that, we are just presenting a new UI. 
+
+Localization?
+---------
+Of course! Automated!
+
+To whom to say thanks?
+---------
+To TheCelavi :)
+And this guy too: http://trentrichardson.com/examples/timepicker/
+Note: he had a bug in his code, I have fixed it and reported to him, I do not know if he going to implemented it. 
+
+And you are most welcome!
+
+TODO?
+---------
+Format date? Is it required at all? Report if you need it, I will implement it. 
