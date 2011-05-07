@@ -1,0 +1,21 @@
+/* 
+    Document   : dmDateTimePickerPlugin
+    Created on : May 7, 2011, 1:21:46 PM
+    Author     : TheCelavi
+    Description:
+        Style of the dmDateTimePickerPlugin form widgets
+*/
+.dmDateTimePickerPlugin input.inputField {
+    float: left;
+}
+.dmDateTimePickerPlugin ul li {
+    float: left;
+    width: 16px;
+    margin-left: 3px;
+    cursor: pointer;
+}
+
+/* Missing jquery-ui styles */
+.ui-icon-calendar { background-position: -32px -112px; }
+.ui-icon-clock { background-position: -80px -112px; }
+.ui-icon-close { background-position: -80px -128px; }

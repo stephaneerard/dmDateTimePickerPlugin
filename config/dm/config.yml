@@ -1,0 +1,10 @@
+default:
+  dmDateTimePickerPlugin:
+    subcultures:
+      sr:               'sr-SR'
+  dmDateTimePicker:
+    default_widget_width:     100px
+  dmDatePicker:
+    default_widget_width:     100px
+  dmTimePicker:
+    default_widget_width:     100px
