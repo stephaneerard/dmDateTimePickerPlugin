@@ -1,17 +1,18 @@
 <?php
+
 /**
  * Replaces standard Symfony UI time with jQuery time picker
  *
  * @author TheCelavi
  */
 class sfWidgetFormTimePicker extends sfWidgetFormTime {
-    
-    public function __construct($options = array(), $attributes = array()) {        
+
+    public function __construct($options = array(), $attributes = array()) {
         parent::__construct($options, $attributes);
-        $this->addOption('widget_width', sfConfig::get('dm_dmTimePicker_default_widget_width'));        
+        $this->addOption('widget_width', sfConfig::get('dm_dmTimePicker_default_widget_width'));
     }
-    
-    public function render($name, $value = null, $attributes = array(), $errors = array()) {  
+
+    public function render($name, $value = null, $attributes = array(), $errors = array()) {
         // This could be nice if we can use Front layout helper :)
         return sprintf('
             <div class="dmDateTimePickerPlugin sfWidgetFormTimePicker">
@@ -28,11 +29,12 @@ class sfWidgetFormTimePicker extends sfWidgetFormTime {
             </div>            
             ', $this->getOption('widget_width'), parent::render($name, $value, $attributes, $errors));
     }
-    
+
     public function getJavaScripts() {
         $subcultures = sfConfig::get('dm_dmDateTimePickerPlugin_subcultures');
-        $culture = dmContext::getInstance()->getUser()->getCulture();        
-        if (isset ($subcultures[$culture])) $culture = $subcultures[$culture];                
+        $culture = dmContext::getInstance()->getUser()->getCulture();
+        if (isset($subcultures[$culture]))
+            $culture = $subcultures[$culture];
         $javascripts = array();
         $javascripts[] = 'lib.ui-core';
         $javascripts[] = 'lib.ui-slider';
@@ -40,21 +42,20 @@ class sfWidgetFormTimePicker extends sfWidgetFormTime {
         $javascripts[] = '/dmDateTimePickerPlugin/js/jquery-ui-timepicker-addon.js';
         if ($culture != 'en') {
             $javascripts[] = sprintf('/dmDateTimePickerPlugin/js/i18n/jquery.ui.timepicker-%s.js', $culture);
-        }        
+        }
         $javascripts[] = '/dmDateTimePickerPlugin/js/dmTimePickerPlugin.js';
         return $javascripts;
-        
     }
-    
+
     public function getStylesheets() {
-        // TODO - Fix diem to properly include stylesheets from the widgets        
-        dmContext::getInstance()->getResponse()->addStylesheet('/dmCorePlugin/lib/jquery-ui/css/jquery-ui-datepicker.css'); 
-        dmContext::getInstance()->getResponse()->addStylesheet('/dmCorePlugin/lib/jquery-ui/css/jquery-ui-slider.css'); 
-        dmContext::getInstance()->getResponse()->addStylesheet('/dmDateTimePickerPlugin/css/jquery-ui-timepicker-addon.css');
-        dmContext::getInstance()->getResponse()->addStylesheet('/dmDateTimePickerPlugin/css/dmDateTimePickerPlugin.css');
-                
-        return parent::getStylesheets();
+        return array_merge(parent::getStylesheets(), array(
+            'lib.ui-datepicker' => null,
+            'lib.ui-slider' => null,
+            '/dmDateTimePickerPlugin/css/jquery-ui-timepicker-addon.css' => null,
+            '/dmDateTimePickerPlugin/css/dmDateTimePickerPlugin.css' => null
+        ));
     }
+
 }
 
 ?>

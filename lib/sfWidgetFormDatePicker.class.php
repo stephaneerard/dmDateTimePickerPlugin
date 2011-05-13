@@ -1,14 +1,15 @@
 <?php
+
 /**
  * Replaces standard Symfony UI date with jQuery date picker
  *
  * @author TheCelavi
  */
 class sfWidgetFormDatePicker extends sfWidgetFormDate {
-    
-    public function __construct($options = array(), $attributes = array()) {        
+
+    public function __construct($options = array(), $attributes = array()) {
         parent::__construct($options, $attributes);
-        $this->addOption('widget_width', sfConfig::get('dm_dmDatePicker_default_widget_width'));        
+        $this->addOption('widget_width', sfConfig::get('dm_dmDatePicker_default_widget_width'));
     }
 
     public function render($name, $value = null, $attributes = array(), $errors = array()) {
@@ -27,11 +28,12 @@ class sfWidgetFormDatePicker extends sfWidgetFormDate {
                 <span style="display:none">%s</span>
             </div>', $this->getOption('widget_width'), parent::render($name, $value, $attributes, $errors));
     }
-    
+
     public function getJavaScripts() {
         $subcultures = sfConfig::get('dm_dmDateTimePickerPlugin_subcultures');
-        $culture = dmContext::getInstance()->getUser()->getCulture();        
-        if (isset ($subcultures[$culture])) $culture = $subcultures[$culture];        
+        $culture = dmContext::getInstance()->getUser()->getCulture();
+        if (isset($subcultures[$culture]))
+            $culture = $subcultures[$culture];
         $javascripts = array();
         $javascripts[] = 'lib.ui-core';
         $javascripts[] = 'lib.ui-datepicker';
@@ -40,16 +42,15 @@ class sfWidgetFormDatePicker extends sfWidgetFormDate {
         }
         $javascripts[] = '/dmDateTimePickerPlugin/js/dmDatePickerPlugin.js';
         return $javascripts;
-        
     }
-    
+
     public function getStylesheets() {
-        // TODO - Fix Diem to properly include stylesheets from the widgets        
-        dmContext::getInstance()->getResponse()->addStylesheet('/dmCorePlugin/lib/jquery-ui/css/jquery-ui-datepicker.css');         
-        dmContext::getInstance()->getResponse()->addStylesheet('/dmDateTimePickerPlugin/css/dmDateTimePickerPlugin.css');
-                
-        return parent::getStylesheets();
+        return array_merge(parent::getStylesheets(), array(
+            'lib.ui-datepicker' => null,
+            '/dmDateTimePickerPlugin/css/dmDateTimePickerPlugin.css'=>null
+        ));
     }
+
 }
 
 ?>
