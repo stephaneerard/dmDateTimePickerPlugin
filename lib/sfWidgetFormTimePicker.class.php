@@ -49,7 +49,8 @@ class sfWidgetFormTimePicker extends sfWidgetFormTime {
 
     public function getStylesheets() {
         return array_merge(parent::getStylesheets(), array(
-            'lib.ui-datepicker' => null,
+            '/dmDateTimePickerPlugin/css/jquery-ui.custom.css' => null,
+            '/dmDateTimePickerPlugin/css/jquery-ui-datepicker.css' => null,
             'lib.ui-slider' => null,
             '/dmDateTimePickerPlugin/css/jquery-ui-timepicker-addon.css' => null,
             '/dmDateTimePickerPlugin/css/dmDateTimePickerPlugin.css' => null

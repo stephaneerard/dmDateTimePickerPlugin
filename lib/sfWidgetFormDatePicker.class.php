@@ -15,7 +15,7 @@ class sfWidgetFormDatePicker extends sfWidgetFormDate {
     public function render($name, $value = null, $attributes = array(), $errors = array()) {
         // This could be nice if we can use Front layout helper :)
         return sprintf('
-            <div class="dmDateTimePickerPlugin sfWidgetFormDatePicker">
+            <div class="dm dmDateTimePickerPlugin sfWidgetFormDatePicker">
                 <input class="inputField" type="text" style="width:%s;" />
                 <ul>
                     <li class="ui-state-default ui-corner-all button-show-picker">
@@ -46,7 +46,8 @@ class sfWidgetFormDatePicker extends sfWidgetFormDate {
 
     public function getStylesheets() {
         return array_merge(parent::getStylesheets(), array(
-            'lib.ui-datepicker' => null,
+            '/dmDateTimePickerPlugin/css/jquery-ui.custom.css' => null,
+            '/dmDateTimePickerPlugin/css/jquery-ui-datepicker.css' => null,
             '/dmDateTimePickerPlugin/css/dmDateTimePickerPlugin.css'=>null
         ));
     }

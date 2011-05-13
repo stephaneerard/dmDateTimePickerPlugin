@@ -5,6 +5,10 @@
     Description:
         Style of the dmDateTimePickerPlugin form widgets
 */
+.ui-datepicker {
+    font-size: 12px;
+    font-family: Arial;
+}
 .dmDateTimePickerPlugin input.inputField {
     float: left;
 }
