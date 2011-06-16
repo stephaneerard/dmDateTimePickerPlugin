@@ -5,27 +5,31 @@ function initializeSfWidgetFormDatePicker($context) {
     $.each($widgets, function(){
         var initialValue = '';        
         var $selects = $(this).find('select');
+        
         var $input = $(this).find('input.inputField').datepicker({
             showButtonPanel: true
-        }).change(function(){
+        }).bind('change.dmDatePicker', function(){
             var date = $(this).datepicker("getDate");
             if (date != null) {
                 $selects.filter('select[name$="[day]"]').val(date.getDate());
                 $selects.filter('select[name$="[month]"]').val(date.getMonth()+1);
-                $selects.filter('select[name$="[year]"]').val(date.getFullYear());
+                $selects.filter('select[name$="[year]"]').val(date.getFullYear()).trigger('change'); 
             } else $selects.val('');
             if ($input.val() != initialValue) $(this).closest('.sf_admin_form_row').addClass('dm_row_modified');
             else $(this).closest('.sf_admin_form_row').removeClass('dm_row_modified');
-        }).blur(function(){
+        }).bind('blur.dmDatePicker', function(){
             $input.change();
-        });        
+        });
+        
         $(this).find('.button-show-picker').click(function(){
             $input.datepicker('show');
         });
+        
         $(this).find('.button-reset-picker').click(function(){
             $input.datepicker('setDate',null).val('').change();
             $input.datepicker('hide');
         });        
+        
         if ($selects.filter('select[name$="[day]"]').val() != '') { 
             $input.datepicker('setDate', 
                 new Date(

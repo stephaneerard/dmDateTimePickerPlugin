@@ -51,12 +51,11 @@ $(document).ready(function(){
     var $check = $('#dm_admin_content');
     if ($check.length >0) initializeSfWidgetFormDateTimePicker($(this)); 
 });
+
 (function($) {
     $('#dm_page div.dm_widget').bind('dmWidgetLaunch', function() {
         initializeSfWidgetFormDateTimePicker($(this));        
     });
-})(jQuery);
-(function($) {
     $('div.dm.dm_widget_edit_dialog_wrap').live('dmAjaxResponse', function() {
         initializeSfWidgetFormDateTimePicker($(this));        
     });

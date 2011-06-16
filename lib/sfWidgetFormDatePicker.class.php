@@ -10,13 +10,14 @@ class sfWidgetFormDatePicker extends sfWidgetFormDate {
     public function __construct($options = array(), $attributes = array()) {
         parent::__construct($options, $attributes);
         $this->addOption('widget_width', sfConfig::get('dm_dmDatePicker_default_widget_width'));
+        $this->addOption('widget_value', date('Y-m-d'));
     }
 
     public function render($name, $value = null, $attributes = array(), $errors = array()) {
         // This could be nice if we can use Front layout helper :)
         return sprintf('
             <div class="dm dmDateTimePickerPlugin sfWidgetFormDatePicker">
-                <input class="inputField" type="text" style="width:%s;" />
+                <input class="inputField" type="text" style="width:%s;" value="%s" />
                 <ul>
                     <li class="ui-state-default ui-corner-all button-show-picker">
                         <span class="ui-icon ui-icon-calendar"></span>
@@ -26,7 +27,7 @@ class sfWidgetFormDatePicker extends sfWidgetFormDate {
                     </li>
                 </ul>
                 <span style="display:none">%s</span>
-            </div>', $this->getOption('widget_width'), parent::render($name, $value, $attributes, $errors));
+            </div>', $this->getOption('widget_width'), $this->getOption('widget_vlaue'), parent::render($name, $value, $attributes, $errors));
     }
 
     public function getJavaScripts() {
