@@ -39,7 +39,7 @@ class sfWidgetFormDateTimePicker extends sfWidgetFormDateTime {
         $javascripts[] = '/dmDateTimePickerPlugin/js/jquery-ui-timepicker-addon.js';
         if ($culture != 'en') {
             $javascripts[] = sprintf('/dmCorePlugin/lib/jquery-ui/js/i18n/jquery.ui.datepicker-%s.js', $culture);
-            $javascripts[] = sprintf('/dmCorePlugin/lib/jquery-ui/js/i18n/jquery.ui.timepicker-%s.js', $culture);
+            $javascripts[] = sprintf('/dmDateTimePicker/js/i18n/jquery.ui.timepicker-%s.js', $culture);
         }        
         $javascripts[] = '/dmDateTimePickerPlugin/js/dmDateTimePickerPlugin.js';
         return $javascripts;
