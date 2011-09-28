@@ -7,7 +7,7 @@ $.timepicker.regional['fr'] = {
         timezoneText: 'Fuseau horaire',
         currentText: 'Maintenant',
         closeText: 'Terminé',
-        timeFormat: 'h:m',
+        timeFormat: 'hh:mm',
         ampm: false
 };
 $.timepicker.setDefaults($.timepicker.regional['fr']);
